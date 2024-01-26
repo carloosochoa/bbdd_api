@@ -1,0 +1,46 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+table{
+    width: 100%;
+}
+table td{
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.primeraFila{
+    background-color: rgb(29, 29, 29);
+    color: #ccc;
+}
+.inp{
+    border-radius: 5px 5px;
+    width: 90%;
+    height: 90%;
+}
+
+.insertar{
+    margin-top: 30px;
+    border: 1px solid black;
+    
+}
+
+.insertar td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.edit{
+    margin-top: 20px;
+    width: 100%;
+}
+tr:nth-child(even){
+    background-color: white;
+}

@@ -1,0 +1,54 @@
+
+
+
+@extends('plantilla')
+@section('titulo','Listado')
+
+@section('contenido')
+
+<table>
+    <tr class="primeraFila">
+        <td>ID</td>
+        <td>Titulo</td>
+        <td>Editorial</td>
+        <td>Precio</td>
+        <td>Modificar</td>
+        <td>Borrar</td>
+    </tr>
+    @foreach($libros as $libro)
+    <tr>
+        <td>{{ $libro->id }}</td>
+        <td>{{ $libro->titulo }}</td>
+        <td>{{ $libro->editorial }}</td>
+        <td>{{ $libro->precio }}</td>
+
+        <td><a href="{{ route('libros.edit', $libro->id) }}" class="btn btn-primary">Modificar</a></td>
+        <form action="{{ route('libros.destroy', $libro->id) }}" method="POST">
+        @csrf 
+        @method('DELETE')
+        <td><input type="submit" class="btn btn-danger" value="Borrar" name="borrar"></td>
+        </form>
+
+
+    </tr>
+    @endforeach 
+</table>
+
+<table class="insertar">
+    <tr>
+        <form action="{{ route('libros.store') }}" method="POST">
+        @csrf
+            <td><input class="inp" placeholder="Titulo..." type="text" name="titulo"></td>
+            <td><input class="inp" placeholder="Editorial..." type="text" name="editorial"></td>
+            <td><input class="inp" placeholder="Precio..." type="number" step="0.01" name="precio"></td>
+
+            <td><input type="submit" value="Insertar" name="insertar" class="btn btn-secondary" ></td>
+        </form>
+    </tr>
+</table>
+
+
+        
+
+@endsection
+
