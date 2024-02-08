@@ -11,6 +11,7 @@
         <td>ID</td>
         <td>Titulo</td>
         <td>Editorial</td>
+        <td>Autores</td>
         <td>Precio</td>
         <td>Modificar</td>
         <td>Borrar</td>
@@ -20,6 +21,17 @@
         <td>{{ $libro->id }}</td>
         <td>{{ $libro->titulo }}</td>
         <td>{{ $libro->editorial }}</td>
+        
+        <?php $autorEncontrado = false ?>
+        @foreach($autores as $autor)
+            @if($autor["id"] == $libro["autor_id"])
+                <td>{{$autor->nombre}}</td>
+                <?php $autorEncontrado = true?>
+            @endif
+        @endforeach
+        @if(!$autorEncontrado)
+            <td>No hay autor</td>
+            @endif
         <td>{{ $libro->precio }}</td>
 
         <td><a href="{{ route('libros.edit', $libro->id) }}" class="btn btn-primary">Modificar</a></td>
@@ -34,21 +46,6 @@
     @endforeach 
 </table>
 
-<table class="insertar">
-    <tr>
-        <form action="{{ route('libros.store') }}" method="POST">
-        @csrf
-            <td><input class="inp" placeholder="Titulo..." type="text" name="titulo"></td>
-            <td><input class="inp" placeholder="Editorial..." type="text" name="editorial"></td>
-            <td><input class="inp" placeholder="Precio..." type="number" step="0.01" name="precio"></td>
-
-            <td><input type="submit" value="Insertar" name="insertar" class="btn btn-secondary" ></td>
-        </form>
-    </tr>
-</table>
-
-
-        
 
 @endsection
 

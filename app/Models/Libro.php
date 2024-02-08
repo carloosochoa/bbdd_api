@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Libro extends Model
 {
     public function autor(){
-        return $this->belongsTo(Autores::class);
+        return $this->belongsTo(Autor::class);
     }
 }

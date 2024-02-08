@@ -5,8 +5,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
+      <a class="nav_item nav-link active" href="{{ route('libros.nuevo') }}">Nuevo Libro</a>
       <a class="nav-item nav-link active" href="{{ route('libros.index') }}">Libros</a>
       <a class="nav-item nav-link active" href="{{ route('autores.index') }}">Autores</a>
+      <a class="nav-item nav-link active" href="{{ route('libros.paginaFiltro') }}">Filtro Libros</a>
+
     </div>
   </div>
 </nav>

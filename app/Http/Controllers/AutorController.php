@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Autores;
+use App\Models\Autor;
 
-class AutoresController extends Controller
+class AutorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $autores = Autores::get();
+        $autores = Autor::get();
       
         return view('autores.index', compact('autores'));
     }
@@ -30,7 +30,7 @@ class AutoresController extends Controller
      */
     public function store(Request $request)
     {
-        $autores = new Autores();
+        $autores = new Autor();
         $autores->nombre = strtoupper($request->get('nombre'));
         $autores->nacimiento = $request->get('nacimiento');
         $autores->save();
@@ -52,7 +52,7 @@ class AutoresController extends Controller
      */
     public function edit(string $id)
     {
-        $autor = Autores::findOrFail($id);
+        $autor = Autor::findOrFail($id);
         return view('autores.edit', compact('autor'));
     }
 
@@ -61,7 +61,7 @@ class AutoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $autor = Autores::findOrFail($id);
+        $autor = Autor::findOrFail($id);
         $autor->nombre = strtoupper($request->get('nombre'));
         $autor->nacimiento = $request->get('nacimiento');
 
@@ -76,10 +76,14 @@ class AutoresController extends Controller
      */
     public function destroy(string $id)
     {
-        Autores::findOrFail($id)->delete();
+        Autor::findOrFail($id)->delete();
 
         return redirect()->route('autores.index');
 
 
+    }
+    public function mostrarAutores()
+    {
+        return Autor::all();
     }
 }
